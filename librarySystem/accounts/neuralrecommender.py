@@ -15,7 +15,7 @@ from sklearn.manifold import TSNE
 
 warnings.filterwarnings('ignore')
 
-dataset = pd.read_csv('C:\\Users\\NUser1\\Desktop\\LibrarySystem Book Recommender\\datasets\\ratings.csv')
+dataset = pd.read_csv('C:\\LibrarySystem Book Recommender\\datasets\\ratings.csv')
 train, test = train_test_split(dataset, test_size=0.2, random_state=42)
 n_users = len(dataset.userID.unique())
 n_books = len(dataset.bookID.unique())
@@ -115,5 +115,5 @@ print("\nRecommended book id: ",recommended_book_ids)
 #predicted score
 print("\nPredicted score: ",predictions[recommended_book_ids])
 
-books = pd.read_csv('C:\\Users\\NUser1\\Desktop\\LibrarySystem Book Recommender\\datasets\\books.csv')
+books = pd.read_csv('C:\\LibrarySystem Book Recommender\\datasets\\books.csv')
 print("\nBook details:\n ",books[books['id'].isin(recommended_book_ids)])

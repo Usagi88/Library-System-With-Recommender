@@ -118,7 +118,7 @@ class recommend:
 
 #recommender
 def recommender(request):
-	dataset = pd.read_csv('C:\\Users\\NUser1\\Desktop\\LibrarySystem Book Recommender\\datasets\\ratings.csv')
+	dataset = pd.read_csv('C:\\LibrarySystem Book Recommender\\datasets\\ratings.csv')
 	train, test = train_test_split(dataset, test_size=0.2, random_state=42)
 	n_users = len(dataset.userID.unique())
 	n_books = len(dataset.bookID.unique())
@@ -149,7 +149,7 @@ def recommender(request):
 
 	#predicted score
 
-	books = pd.read_csv('C:\\Users\\NUser1\\Desktop\\LibrarySystem Book Recommender\\datasets\\books.csv')
+	books = pd.read_csv('C:\\LibrarySystem Book Recommender\\datasets\\books.csv')
 	#values = {}
 	#values = books[books['id'].isin(recommended_book_ids)]
 	list_of_recommend = []
