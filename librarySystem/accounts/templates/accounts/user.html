@@ -1,0 +1,79 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">			
+		<div class="card card-body">
+			<h5>User</h5>
+			<hr>
+			<a class="btn btn-outline-info btn-sm btn-block" href="{% url 'create_borrow' user.id %}">Borrow Book</a>
+		</div>
+	</div>
+
+	<div class ="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>User ID: {{user.id}}</p>
+			<p>Email: {{user.email}}</p>
+			<p>Name: {{user.name}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Borrowed</h5>
+			<hr>
+			<h3>{{borrows_count}}</h3>
+			<h1 style="text-align: center;padding: 10px"></h1>
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{myFilter.form}}
+				<button class="btn-btn-primary" type="submit">Search</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>BookID</th>
+					<th>Title</th>
+					<th>Borrowed Date</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for borrow in borrows %}
+
+				<tr>
+					<td>{{borrow.book.bookID}}</td>
+					<td>{{borrow.book.title}}</td>
+					<td>{{borrow.borrowedDate}}</td>
+					<td>{{borrow.status}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_borrow' borrow.id %}">Update</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_borrow' borrow.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

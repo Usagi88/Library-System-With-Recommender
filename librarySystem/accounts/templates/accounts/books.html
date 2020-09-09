@@ -1,0 +1,49 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Books</h5>
+		</div>
+		
+		<div class="card card-body">
+			<table class="table">
+				<tr>
+					<th>BookID</th>
+					<th>Title</th>
+					<th>Books Count</th>
+					<th>Ratings Count</th>
+					<th>Rating Average</th>
+					<th>Author</th>
+					<th>Language</th>
+				</tr>
+
+				{% for i in books %}
+					<tr>
+						<td>{{i.bookID}}</td>
+						<td>{{i.title}}</td>
+						<td>{{i.bookCount}}</td>
+						<td>{{i.ratingCount}}</td>
+						<td>{{i.ratingAvg}}</td>
+						<td>{{i.author}}</td>
+						<td>{{i.language}}</td>
+					</tr>
+				{% endfor %}	
+			</table>
+		</div>
+		<ul class ="pagination">
+			{% for i in paginator.page_range %}
+				<li class = "page-item">
+					<a class="page-link" href="?page={{i}}">{{i}}</a>
+				</li>
+			{% endfor %}
+
+		</ul>
+	</div>
+</div>
+
+{% endblock %}
